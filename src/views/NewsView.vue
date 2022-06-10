@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div v-for="(_news, index) in this.$store.state.news" v-bind:key="index">{{_news.title}}</div>
+        <list-component></list-component>
     </div>
 </template>
 
 <script>
+import ListComponent from '../components/ListComponent.vue';
+
 export default {
-    created() {
-        this.$store.dispatch('FETCH_NEWS');
-    }
+    components: {
+        'list-component': ListComponent
+    },
 }
 </script>
 

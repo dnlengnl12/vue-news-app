@@ -1,19 +1,15 @@
 <template>
   <div>
-      <div v-for="(item, index) in ask" v-bind:key="index">{{item}}</div>
+      <list-component :titlelink="'/item'"></list-component>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import ListComponent from '@/components/ListComponent.vue';
+
 export default {
-    computed: {
-        ...mapGetters({
-            ask: 'fetchedAsk'
-        })
-    },
-    created() {
-        this.$store.dispatch('FETCH_ASK');
+    components: {
+        'list-component': ListComponent
     }
 }
 </script>

@@ -1,13 +1,15 @@
 <template>
   <div>
-      <div v-for="(job, index) in this.$store.state.jobs" v-bind:key="index">{{job.title}}</div>
+    <list-component></list-component>
   </div>
 </template>
 
 <script>
+import ListComponent from '../components/ListComponent.vue';
+
 export default {
-    created() {
-        this.$store.dispatch('FETCH_JOBS');
+    components: {
+        'list-component': ListComponent
     }
 }
 </script>

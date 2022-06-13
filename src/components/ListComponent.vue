@@ -33,34 +33,9 @@ import bus from '../utils/bus';
 
 export default {
     props: ['titlelink'],
-    data() {
-        return {
-            dataName: []
-        }
-    },
     computed: {
         listItem() {
-            return this.$store.getters[this.dataName[1]]
-        }
-    },
-    created() {
-        bus.$emit('start:spinner');
-        const { name } = this.$route;
-        this.dataName = this.getDataName(name);
-        this.$store.dispatch(`${ this.dataName[0] }`);
-        bus.$emit('end:spinner');
-    },
-    methods: {
-        getDataName(fetchName) {
-            switch (fetchName) {
-                case 'news':
-                    return ['FETCH_NEWS', 'fetchedNews'];
-                case 'ask':
-                    return ['FETCH_ASK', 'fetchedAsk'];
-                case 'jobs':
-                    return ['FETCH_JOBS','fetchedJobs'];
-            }
-            return null;
+            return this.$store.state.list;
         }
     },
     components: {

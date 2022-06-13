@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <tool-bar></tool-bar>
-    <transition name="page">
+    <Transition name="page">
       <router-view></router-view>
-    </transition>
+    </Transition>
     <spinner-component :loading="loadingStatus"></spinner-component>
   </div>
 </template>
@@ -73,7 +73,7 @@ a.router-link-exact-active {
   transition: opacity 0.5s ease;
 }
 
-.page-enter-from,
+.page-enter,
 .page-leave-to {
   opacity: 0;
 }

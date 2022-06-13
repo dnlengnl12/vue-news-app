@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import NewsView from '../views/NewsView.vue';
-import AskView from '../views/AskView.vue';
-import JobsView from '../views/JobsView.vue';
 import UserView from '../views/UserView.vue';
 import ItemView from '../views/ItemView.vue';
+import createListView from '../views/CreateListView';
+import bus from '../utils/bus';
+import { listBeforeEnter } from '../utils/commonApi';
+import { store } from '../store/index';
 
 Vue.use(VueRouter);
 
@@ -18,17 +19,20 @@ export const router = new VueRouter({
         {
             path: '/news',
             name: 'news',
-            component: NewsView,
+            component: createListView('NewsView'),
+            beforeEnter: (to, from, next) => listBeforeEnter(to, from, next)
         },
         {
             path: '/ask',
             name: 'ask',
-            component: AskView
+            component: createListView('AskView'),
+            beforeEnter: (to, from, next) => listBeforeEnter(to, from, next)
         },
         {
             path: '/jobs',
             name: 'jobs',
-            component: JobsView
+            component: createListView('JobsView'),
+            beforeEnter: (to, from, next) => listBeforeEnter(to, from, next)
         },
         {
             path: '/user/:id',
